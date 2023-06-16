@@ -5,10 +5,11 @@ import { FaUserCircle, FaUserAlt } from 'react-icons/fa';
 import Image from "next/image";
 import Avatar from 'react-avatar';
 
-function header() {
+function Header() {
   return (
     <div className="flex flex-col rounded-sm bg-gray-500/10 p-5 ">
       <div className="flex">
+        
         <Image 
             src="/images/chatgpt-icon.svg"
             alt="logo"
@@ -41,4 +42,4 @@ function header() {
   )
 }
 
-export default header
+export default Header
