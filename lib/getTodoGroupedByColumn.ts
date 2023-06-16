@@ -24,15 +24,36 @@ export const getTodoGroupedByColumn = async () => {
                 status:todo.status,
 
                 // get the image if it exists
-                ...(todo.image && { image: todo.image })
+                ...(todo.image && { image: JSON.parse(todo.image) })
 
             })
 
             return acc;
 
+    }, new Map<TypedColumn, Column>)
 
-    }, new Map<TypedColmn, Column>)
+//    if columns dosent have anything display empty array
 
-    console.log(columns);
+    const columnTypes: TypedColumn[] = ["todos", "inprogress","done"];
+        for (const columnType of columnTypes) {
+            if(!columns.get(columnType)){
+                columns.set(columnType, {
+                    id: columnType,
+                    todos: [],
+                });
+            }
+        }
 
-};
+        const SortedColumns = new Map(
+            Array.from(columns.entries()).sort(
+                (a, b) => columnTypes.indexOf(a[0]) - columnTypes.indexOf(b[0])
+            )
+        );
+        
+        const board: Board = {
+            columns: SortedColumns
+        }
+
+        return board;
+
+    };

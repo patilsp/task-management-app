@@ -4,13 +4,17 @@ import { useEffect } from 'react';
 import { DragDropContent, Droppable } from 'react-beautiful-dnd';
 
 function Board() {
-  const getBoard =  useBoardStore((state) => state.getBoard);
+  const [board, getBoard]=  useBoardStore((state) => [
+    state.board,
+    state.getBoard,
+  ]);
 
   useEffect(() => {
   // Get Board
     getBoard();
   }, [getBoard]);
 
+  console.log(board);
 
   return (
     <div>
