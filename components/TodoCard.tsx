@@ -45,12 +45,12 @@ function TodoCard({
   }, [todo]);
   return (
     <div
-      className="bg-white rounded-md space-y-2 drop-shadow-md"
+      className="space-y-2 rounded-md bg-white drop-shadow-md"
       {...draggableProps}
       {...dragHandleProps}
       ref={innerRef}
     >
-      <div className="flex justify-between items-center p-5">
+      <div className="flex items-center justify-between p-5">
         <p>{todo.title}</p>
         <button
           onClick={() => deleteTask(index, todo, id)}
@@ -66,9 +66,9 @@ function TodoCard({
           <Image
             src={imageUrl}
             alt=""
-            width={400}
-            height={200}
-            className="w-full object-contain rounded-b-md"
+            width={300}
+            height={150}
+            className="w-full rounded-b-md object-contain"
           />
         </div>
       )}

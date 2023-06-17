@@ -104,7 +104,7 @@ function Board() {
       <Droppable droppableId="board" direction={direction} type="column">
         {(provided) => (
           <div
-            className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-7xl mx-auto"
+            className="mx-auto grid max-w-7xl grid-cols-1 gap-5 md:grid-cols-3"
             {...provided.droppableProps}
             ref={provided.innerRef}
           >

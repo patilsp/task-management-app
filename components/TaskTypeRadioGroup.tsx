@@ -8,7 +8,7 @@ import { useBoardStore } from "@/store/BoardStore";
 const types = [
   {
     id: "todo",
-    name: "Todo",
+    name: "New Request",
     description: "A new task to be completed",
     color: "bg-red-500",
   },
@@ -20,7 +20,7 @@ const types = [
   },
   {
     id: "done",
-    name: "Done",
+    name: "Completed",
     description: "A task that has been completed",
     color: "bg-green-500",
   },

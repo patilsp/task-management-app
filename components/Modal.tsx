@@ -77,25 +77,25 @@ function Modal() {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              {/* <div className="fixed inset-0 bg-black bg-opacity-25"></div> */}
-              <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+          
+              <Dialog.Panel className="mt-10 w-full max-w-md overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                 <Dialog.Title
                   as="h3"
-                  className="text-lg font-medium leading-6 text-gray-900 pb-2"
+                  className="pb-2 text-lg font-medium leading-6 text-gray-900"
                 >
                   Add a Task
                 </Dialog.Title>
 
-                <div className="mt-2">
+                <div className="mt-2 ">
                   <input
                     type="text"
                     value={newTaskInput}
                     onChange={(e) => setNewTaskInput(e.target.value)}
                     placeholder="Enter a task here..."
-                    className="w-full border border-gray-300 rounded-md outline-none p-5"
+                    className="w-full rounded-md border border-gray-300 p-5 outline-none"
                   />
                 </div>
-
+               
                 {/* <TaskTypeRadioGroup /> */}
                 <TaskTypeRadioGroup />
 
@@ -103,12 +103,12 @@ function Modal() {
                 <div className="mt-2">
                   <button
                     type="button"
-                    className="w-full border border-gray-300 rounded-md outline-none p-5 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                    className="w-full rounded-md border border-gray-300 p-5 outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                     onClick={(e) => {
                       imagePickerRef.current?.click();
                     }}
                   >
-                    <PhotoIcon className="h-6 w-6 mr-2 inline-block" />
+                    <PhotoIcon className="mr-2 inline-block h-6 w-6" />
                     Upload Image
                   </button>
                   {image && (
@@ -117,7 +117,7 @@ function Modal() {
                       alt={"Uploaded Image"}
                       height={200}
                       width={200}
-                      className="w-full h-44 object-cover mt-2 filter hover:grayscale transition-all duration-150 cursor-not-allowed"
+                      className="mt-2 h-44 w-full cursor-not-allowed object-cover transition-all duration-150 hover:grayscale"
                       onClick={() => {
                         setImage(null);
                       }}
@@ -139,7 +139,7 @@ function Modal() {
                     <button
                       type="submit"
                       disabled={!newTaskInput}
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:bg-gray-100 disabled:text-gray-300 disabled:cursor-not-allowed"
+                      className="addTask"
                     >
                       Add Task
                     </button>
