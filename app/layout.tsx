@@ -8,6 +8,8 @@ import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 
+import Modal from "@/components/Modal";
+
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
