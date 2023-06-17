@@ -34,7 +34,7 @@ export default function Header() {
       readyForGPTRef.current = false;
       fetchSuggestionFunc();
     }
-  }, [board]);
+  }, [board, loading]);
 
   return (
     <div className="container">
