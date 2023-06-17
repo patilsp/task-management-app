@@ -1,0 +1,7 @@
+npm install
+
+npm install react-beautiful-dnd
+npm install @heroicons/react
+
+npm install zustand
+

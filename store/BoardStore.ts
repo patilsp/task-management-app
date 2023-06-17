@@ -1,7 +1,7 @@
 import { ID, databases, storage } from '@/appwrite';
 
 import { create } from 'zustand'
-import { getTodoGroupedByColumn } from '@/lib/getTodoGroupedByColumn';
+import { getTodosGroupedByColumn } from '@/lib/getTodosGroupedByColumn';
 import uploadImage from '@/lib/uploadImage';
 
 interface BoardState {
@@ -26,7 +26,7 @@ export const useBoardStore = create<BoardState>((set, get) => ({
         columns: new Map<TypedColumn, Column>()
     },
     getBoard: async() => {
-        const board = await getTodoGroupedByColumn();
+        const board = await getTodosGroupedByColumn();
         set({board});
     },
     setBoardState: (board) => set({board}),

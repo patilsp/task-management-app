@@ -1,79 +1,84 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
-import Image from "next/image";
 import { MagnifyingGlassIcon, UserCircleIcon } from "@heroicons/react/24/solid";
-import Avatar from "react-avatar";
-import { useBoardStore } from "@/store/BoardStore";
-import fetchSuggestion from "@/lib/fetchSuggestion";
+import { useEffect, useState } from "react";
 
-export default function Header() {
-  const readyForGPTRef = useRef(true);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [suggestion, setSuggestion] = useState<string>('');
+import Gravatar from "react-gravatar";
+import Image from "next/image";
+import fetchSuggestion from "@/lib/fetchSuggestion";
+import { useBoardStore } from "@/store/BoardStore";
+
+function Header() {
   const [board, searchString, setSearchString] = useBoardStore((state) => [
     state.board,
     state.searchString,
     state.setSearchString,
   ]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [suggestion, setSuggestion] = useState<string>("");
 
   useEffect(() => {
-    if (!board.columns?.size) {
-      return;
-    }
-    const fetchSuggestionFunc = async () => {
-      setLoading(true);
-      const suggestionResult = await fetchSuggestion(board);
-      setSuggestion(suggestionResult);
-      setTimeout(() => {
-        readyForGPTRef.current = true;
-      }, 10000);
-      setLoading(false);
-    };
-    if (!loading && readyForGPTRef.current) {
-      readyForGPTRef.current = false;
-      fetchSuggestionFunc();
-    }
-  }, [board, loading]);
+    // if (board.columns.size === 0) return;
+    // setLoading(true);
+    // const fetchSuggestionFunc = async () => {
+    //   const suggestion = await fetchSuggestion(board);
+    //   setSuggestion(suggestion);
+    //   setLoading(false);
+    // };
+    // fetchSuggestionFunc();
+  }, [board]);
 
   return (
-    <div className="container">
-      <div className="flex flex-col items-center rounded-b-2xl p-5 md:flex-row">
-        <div className="absolute left-0 top-0 -z-50 h-96 w-full rounded-md bg-gradient-to-br from-pink-400 to-[#0055D1] opacity-50 blur-3xl"></div>
- 
-        <div className="flex w-full flex-1 items-center justify-end space-x-5">
-          <form className="flex flex-1 items-center space-x-5 rounded-md bg-white p-2 shadow-md md:flex-initial">
-            <MagnifyingGlassIcon
-              className="h-6 w-6 text-gray-400"
-            />
+    <header>
+      <div className="flex flex-col md:flex-row items-center p-5 bg-gray-500/10 rounded-b-2xl">
+        {/* invisible div - will act like a gradient */}
+        <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-br from-pink-400 to-[#0055D1] rounded-md filter blur-3xl opacity-50 -z-50" />
+
+        <Image
+          src="https://upload.wikimedia.org/wikipedia/en/thumb/8/8c/Trello_logo.svg/1280px-Trello_logo.svg.png"
+          alt="Trello Logo"
+          width={300}
+          height={100}
+          className="w-44 md:w-56 pb-10 md:pb-0 object-contain"
+        />
+
+        <div className="flex items-center space-x-5 flex-1 justify-end w-full">
+          {/* Search Box */}
+          <form className="flex items-center space-x-5 bg-white rounded-md p-2 shadow-md flex-1 md:flex-initial">
+            <MagnifyingGlassIcon className="h-6 w-6 text-gray-400" />
             <input
               type="text"
               placeholder="Search"
-              className="flex-1 p-2 outline-none"
-              value={searchString}
+              className="flex-1 outline-none p-2"
               onChange={(e) => setSearchString(e.target.value)}
             />
-            <button type="submit" hidden>
+            <button hidden type="submit">
               Search
             </button>
           </form>
-          <Avatar
-            name="SP"
-            round
-            size="50"
-            color="#0055D1"
-          />
+
+          {/* Avatar */}
+          <Gravatar email="a-email@example.com" size={50} />
         </div>
       </div>
-      <div className="flex items-center justify-center px-5 md:py-5">
-        <p className="flex w-fit max-w-3xl items-center rounded-xl bg-white p-5 py-2 text-sm font-light italic text-[#0055D1] shadow-xl">
-          <UserCircleIcon
-            className={`mr-1 inline-block h-10 w-10 text-[#0055D1]
-          ${loading && 'animate-spin'}`}
-          />
-          {suggestion && !loading ? suggestion : 'GPT is summarizing your tasks for the day...'}
-        </p>
+
+      {/* gpt */}
+      <div className="flex items-center justify-center px-5 py-2 md:py-5">
+        {false && (
+          <p className="flex items-center text-sm font-light pr-5 shadow-xl rounded-xl w-fit bg-white italic max-w-3xl text-[#0055d1] p-5">
+            <UserCircleIcon
+              className={`inline-block h-10 w-10 text-[#0055D1] mr-1 ${
+                loading && "animate-spin"
+              }`}
+            />
+            {suggestion && !loading
+              ? suggestion
+              : "GPT is summarising for your day..."}
+          </p>
+        )}
       </div>
-    </div>
+    </header>
   );
 }
+
+export default Header;

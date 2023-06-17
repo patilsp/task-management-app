@@ -4,9 +4,6 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-  images: {
-    domains: ["upload.wikimedia.org", "cloud.appwrite.io"],
-  },
 }
 
 export default nextConfig
