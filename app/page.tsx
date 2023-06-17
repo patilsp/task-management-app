@@ -2,7 +2,6 @@ import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
 import { buttonVariants } from "@/components/ui/button"
-import Nav from "@/components/nav"
 import Header from "@/components/Header"
 import Board from "@/components/Board"
 
