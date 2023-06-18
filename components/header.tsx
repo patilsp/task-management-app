@@ -38,8 +38,8 @@ export default function Header() {
 
   return (
     <header>
-      <div className="flex flex-col items-center rounded-b-2xl p-5 md:flex-row">
-        <div className="flex items-center justify-center px-5 md:py-5">
+      <div className="flex flex-col items-center rounded-b-2xl md:flex-row">
+        <div className="flex items-center justify-center  md:py-5">
           <p className="flex w-fit max-w-3xl items-center rounded-xl bg-white p-5 py-2 text-sm font-light italic text-[#0055D1] shadow-xl">
             <UserCircleIcon
               className={`mr-1 inline-block h-10 w-10 text-[#0055D1]
@@ -56,7 +56,7 @@ export default function Header() {
             <input
               type="text"
               placeholder="Search"
-              className="flex-1 p-2 outline-none"
+              className="flex-1 p-2 outline-none bg-white"
               value={searchString}
               onChange={(e) => setSearchString(e.target.value)}
             />

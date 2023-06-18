@@ -135,7 +135,7 @@ function Modal() {
                     }}
                   />
 
-                  <div className="mt-4">
+                  <div className="mt-4 text-center">
                     <button
                       type="submit"
                       disabled={!newTaskInput}
