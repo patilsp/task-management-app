@@ -41,17 +41,22 @@ function Column({ id, todos, index }: Props) {
         >
           {/* render droppable todos in the column */}
           <Droppable droppableId={index.toString()} type="card">
+            
+            
             {(provided, snapshot) => (
               <div
-                className={`p-2 rounded-2xl shadow-sm ${
-                  snapshot.isDraggingOver ? "bg-green-200" : "bg-white/50"
+                className={`bg-var(--bg-blur) rounded-2xl p-2 shadow-sm ${
+                  snapshot.isDraggingOver ? "bg-green-400" : "glass-card"
                 }`}
                 {...provided.droppableProps}
                 ref={provided.innerRef}
               >
-                <h2 className="flex justify-between font-bold text-xl p-2">
-                  {idToColumnText[id]}
-                  <span className="text-gray-500 bg-gray-200 rounded-full px-2  py-1 text-sm font-normal">
+              <div className="flex justify-between ">
+                <div className="flex justify-start">
+                <h2 className="flex justify-between p-3 text-xl font-bold">
+                <span className="">{idToColumnText[id]}</span>
+                  
+                  <span className="ml-2 h-7 w-7 rounded-full bg-gray-300 px-2.5 py-1 text-sm font-bold uppercase text-gray-700">
                     {!searchString
                       ? todos.length
                       : todos.filter((todo) =>
@@ -62,6 +67,18 @@ function Column({ id, todos, index }: Props) {
                   </span>
                 </h2>
 
+                </div>
+
+                <div className="flex items-end justify-end p-2">
+                    <button
+                      onClick={handleAddTask}
+                      className="text-green-500 hover:text-green-600"
+                    >
+                      <PlusCircleIcon className="h-10 w-10" />
+                    </button>
+                  </div>
+
+                </div>               
                 <div className="space-y-2">
                   {todos.map((todo, index) => {
                     if (
@@ -95,14 +112,9 @@ function Column({ id, todos, index }: Props) {
 
                   {provided.placeholder}
 
-                  <div className="flex items-center justify-end p-2">
-                    <button
-                      onClick={handleAddTask}
-                      className="text-green-500 hover:text-green-600"
-                    >
-                      <PlusCircleIcon className="h-10 w-10" />
-                    </button>
-                  </div>
+
+  
+
                 </div>
               </div>
             )}
