@@ -45,7 +45,7 @@ function Column({ id, todos, index }: Props) {
             
             {(provided, snapshot) => (
               <div
-                className={`bg-var(--bg-blur) rounded-2xl p-2 shadow-sm ${
+                className={`rounded-2xl p-2 shadow-sm ${
                   snapshot.isDraggingOver ? "bg-green-400" : "glass-card"
                 }`}
                 {...provided.droppableProps}
@@ -56,7 +56,7 @@ function Column({ id, todos, index }: Props) {
                 <h2 className="flex justify-between p-3 text-xl font-bold">
                 <span className="">{idToColumnText[id]}</span>
                   
-                  <span className="ml-2 h-7 w-7 rounded-full bg-gray-300 px-2.5 py-1 text-sm font-bold uppercase text-gray-700">
+                  <span className="ml-2 h-7 w-7 rounded-full bg-gray-800 px-2 py-1 text-sm font-bold uppercase text-white">
                     {!searchString
                       ? todos.length
                       : todos.filter((todo) =>

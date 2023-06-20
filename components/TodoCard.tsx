@@ -43,36 +43,47 @@ function TodoCard({
       fetchImage();
     }
   }, [todo]);
-  return (
-    <div className="bg-slate-200 text-black dark:bg-slate-900 dark:text-slate-100">
-      <div
-        className="space-y-2 rounded-md bg-white drop-shadow-md"
-        {...draggableProps}
-        {...dragHandleProps}
-        ref={innerRef}
+  return (   
+    <div className="flex w-full flex-col items-center justify-center">
+      <div className="flex w-full max-w-md flex-col rounded-xl bg-gray-800 p-3 text-white shadow-lg" 
+      {...draggableProps}
+      {...dragHandleProps}
+      ref={innerRef}  
       >
-        <div className="flex items-center justify-between p-5">
-          <p className="leading-1 text-base text-slate-800">{todo.title}</p>
-          <button
-            onClick={() => deleteTask(index, todo, id)}
-            className="close-btn text-red-500 hover:text-red-600"
-          >
-            <XCircleIcon className="ml-5 h-8 w-8" />
-          </button>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            <div className="h-4 w-4 rounded-full border border-purple-500"></div>
+            <div className="text-md font-normal">{todo.title}</div>
+          </div>
+          <div className="flex items-center space-x-4">
+            
+            <div className="cursor-pointer text-gray-500 hover:text-gray-300">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+              </svg>
+            </div>
+            <div className="cursor-pointer text-gray-500 hover:text-gray-300">
+            <button
+              onClick={() => deleteTask(index, todo, id)}
+              className="text-red-500 hover:text-red-600"
+            >
+              <XCircleIcon className="h-8 w-8" />
+            </button>
+            </div>
+          </div>
         </div>
-
         {/* Add image here... */}
         {imageUrl && (
-          <div className="h-full w-full rounded-b-md">
-            <Image
-              src={imageUrl}
-              alt=""
-              width={300}
-              height={150}
-              className="w-full rounded-b-md object-contain"
-            />
-          </div>
-        )}
+                <div className="h-full w-full rounded-b-md">
+                  <Image
+                    src={imageUrl}
+                    alt=""
+                    width={300}
+                    height={150}
+                    className="w-full rounded-b-md object-contain"
+                  />
+                </div>
+              )}
       </div>
     </div>
   );
