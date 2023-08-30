@@ -7,7 +7,7 @@ A Next.js 13 template for building apps with Radix UI and Tailwind CSS.
 ```bash
 npx create-next-app -e https://github.com/shadcn/next-template
 ```
-![image](https://github.com/patilsp/task-management-app/assets/35653819/fa25e6a4-ef50-451e-b435-0782c7dd3aa8)
+![todos](https://github.com/patilsp/task-management-app/assets/35653819/1cfc2ad0-2da6-4d80-9dc6-88a466cf4b56)
 
 
 ## Features
