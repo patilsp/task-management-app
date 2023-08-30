@@ -45,7 +45,7 @@ function TodoCard({
   }, [todo]);
   return (   
     <div className="flex w-full flex-col items-center justify-center">
-      <div className="flex w-full max-w-md flex-col rounded-xl bg-gray-800 p-3 text-white shadow-lg" 
+      <div className="flex w-full max-w-md flex-col rounded-xl bg-gray-100 p-3 shadow-lg" 
       {...draggableProps}
       {...dragHandleProps}
       ref={innerRef}  
